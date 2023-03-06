@@ -6,7 +6,7 @@ import uniqid from "uniqid";
 
 import { getAllHeroes } from "../../services/fetch";
 import Skeleton from "../Skeleton/Skeleton";
-import { SearchContext } from '../pages/HomePage';
+import { SearchContext } from "../pages/HomePage";
 
 function CharList() {
   const { searchValue } = useContext(SearchContext);
@@ -38,8 +38,15 @@ function CharList() {
       .filter((obj) => {
         return obj.name.toLowerCase().includes(searchValue.toLowerCase());
       })
-      .map((item) => {
-        return <CharListItem key={uniqid()} {...item} />;
+      .map(({ name, species, image }) => {
+        return (
+          <CharListItem
+            key={uniqid()}
+            name={name}
+            species={species}
+            image={image}
+          />
+        );
       });
 
   return (
