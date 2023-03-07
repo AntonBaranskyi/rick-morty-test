@@ -7,7 +7,7 @@ import {
 } from "./SearchStyled";
 import find from "../../assets/search-icon.svg";
 import close from "../../assets/close-icon.svg";
-import { SearchContext } from '../pages/HomePage';
+import { SearchContext } from "../pages/HomePage";
 
 function Search() {
   const { searchValue, setSearchValue } = useContext(SearchContext);

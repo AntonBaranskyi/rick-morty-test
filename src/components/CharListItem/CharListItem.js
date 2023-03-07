@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ItemDescr,
   ItemImg,
@@ -6,14 +7,15 @@ import {
   WrapperItem,
 } from "./CharListItemStyled";
 
-
-function CharListItem({ name, species, image }) {
+function CharListItem({ name, species, image, id }) {
   return (
-    <WrapperItem>
-      <ItemImg src={image} alt="rick" />
-      <ItemTitle>{name}</ItemTitle>
-      <ItemDescr>{species}</ItemDescr>
-    </WrapperItem>
+    <Link to={`/singleHero/${id}`} style={{ textDecoration: "none" }}>
+      <WrapperItem>
+        <ItemImg src={image} alt="rick" />
+        <ItemTitle>{name}</ItemTitle>
+        <ItemDescr>{species}</ItemDescr>
+      </WrapperItem>
+    </Link>
   );
 }
 

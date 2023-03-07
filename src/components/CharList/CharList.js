@@ -14,8 +14,12 @@ function CharList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   useEffect(() => {
-    getAllHeroes().then(onLoadHeroes).catch(onError);
+    getHero();
   }, []);
+
+  const getHero = () => {
+    getAllHeroes().then(onLoadHeroes).catch(onError);
+  };
 
   const onLoadHeroes = (resp) => {
     const sortedHeroes = resp.sort((a, b) => a.name.localeCompare(b.name));
@@ -38,13 +42,14 @@ function CharList() {
       .filter((obj) => {
         return obj.name.toLowerCase().includes(searchValue.toLowerCase());
       })
-      .map(({ name, species, image }) => {
+      .map(({ name, species, image, id }) => {
         return (
           <CharListItem
             key={uniqid()}
             name={name}
             species={species}
             image={image}
+            id={id}
           />
         );
       });

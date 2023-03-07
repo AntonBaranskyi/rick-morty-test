@@ -13,3 +13,9 @@ export const getAllHeroes = async () => {
 
   return res.results.slice(0,8);
 };
+
+export const getHeroById = async (id)=>{
+  const res = await getHeroData(`https://rickandmortyapi.com/api/character/${id}`)
+
+  return await res;
+}
