@@ -15,7 +15,7 @@ function CharList() {
   const [error, setError] = useState(false);
   useEffect(() => {
     getHero();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getHero = () => {
     getAllHeroes().then(onLoadHeroes).catch(onError);

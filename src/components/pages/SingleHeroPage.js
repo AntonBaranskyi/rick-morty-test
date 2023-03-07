@@ -9,11 +9,11 @@ export default function SingleHeroPage() {
   const { heroId } = useParams();
   const [singleHero, setSingleHero] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
   useEffect(() => {
     onHeroData();
-  }, [heroId]);
+  }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onHeroData = () => {
     getHeroById(heroId).then(onLoadHero);
