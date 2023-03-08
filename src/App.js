@@ -5,15 +5,18 @@ import SingleHeroPage from "./components/pages/SingleHeroPage";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/pages/NotFound";
 
-import { useSelector } from "react-redux";
-import FacebookAuth from "./components/FacebookAuth";
+// import { useSelector } from "react-redux";
+// import FacebookAuth from "./components/FacebookAuth";
 
 function App() {
-  const userData = useSelector((state) => state.auth.userData);
+  // const userData = useSelector((state) => state.auth.userData);
   return (
     <div className="App">
       <Routes>
-        {userData ? (
+        <Route path="/" element={<HomePage />} />
+        <Route path="/singleHero/:heroId" element={<SingleHeroPage />} />
+        <Route path="*" element={<NotFound />} />
+        {/* {userData ? (
           <>
             <Route path="/" element={<HomePage />} />
             <Route path="/singleHero/:heroId" element={<SingleHeroPage />} />
@@ -21,7 +24,7 @@ function App() {
           </>
         ) : (
           <Route path=""  element={<FacebookAuth />} />
-        )}
+        )} */}
       </Routes>
     </div>
   );
