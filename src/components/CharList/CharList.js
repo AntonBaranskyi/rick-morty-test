@@ -20,14 +20,14 @@ function CharList() {
 
   useEffect(() => {
     localStorage.setItem("searchValue", searchValue);
-  }, [searchValue]);
+  }, [searchValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const storedValue = localStorage.getItem("searchValue");
     if (storedValue) {
       setSearchValue(storedValue);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getHero = () => {
     getAllHeroes().then(onLoadHeroes).catch(onError);
