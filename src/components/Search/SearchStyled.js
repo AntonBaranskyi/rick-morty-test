@@ -29,6 +29,10 @@ export const SearchInput = styled.input`
     width: 100%;
     font-size: 14px;
   }
+  @media (max-width: 795px) {
+  
+    
+  }
 `;
 
 export const SearchFind = styled.img`
