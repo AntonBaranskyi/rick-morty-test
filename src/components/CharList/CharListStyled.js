@@ -55,7 +55,17 @@ export const WrapperWrapper = styled.div`
 export const NotFoundHero = styled.h3`
   font-size: 32px;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
 
- 
+  @media (max-width: 355px) {
+    position: relative;
+    right: 85px;
+    text-align: left;
+  }
+
+  @media (max-width: 609px) {
+    position: relative;
+    right: 85px;
+    
+  }
 `;

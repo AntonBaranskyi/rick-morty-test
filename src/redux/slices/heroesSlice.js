@@ -26,7 +26,7 @@ const heroesSlice = createSlice({
     });
 
     builder.addCase(fetchHeroes.fulfilled, (state, action) => {
-      const temp = action.payload.results.slice(0, 8);
+      const temp = action.payload.results.slice(6, 14);
       const sortedHeroes = temp.sort((a, b) => a.name.localeCompare(b.name));
       state.items = sortedHeroes;
       state.status = "success";
