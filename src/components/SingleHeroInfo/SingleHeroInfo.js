@@ -1,6 +1,7 @@
 import React from "react";
 import { WrapperInfo } from "./SingleHeroInfoStyled";
 import SingleHeroInfoItem from "../SingleHeroInfoItem/SingleHeroItem";
+import uniqid from "uniqid";
 
 function SingleHeroInfo({ gender, status, species, origin, type }) {
   const infoItems = [
@@ -13,8 +14,10 @@ function SingleHeroInfo({ gender, status, species, origin, type }) {
   return (
     <WrapperInfo>
       {infoItems &&
-        infoItems.map(({ value, label }, index) => {
-          return <SingleHeroInfoItem key={index} label={label} value={value} />;
+        infoItems.map(({ value, label }) => {
+          return (
+            <SingleHeroInfoItem key={uniqid()} label={label} value={value} />
+          );
         })}
     </WrapperInfo>
   );

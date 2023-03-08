@@ -57,5 +57,5 @@ export const NotFoundHero = styled.h3`
   font-weight: 700;
   text-align: center;
 
-  position: relative;
+ 
 `;

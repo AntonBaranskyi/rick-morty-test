@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 413px;
   height: 64px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+
+    font-size: 14px;
+  }
 `;
 
 export const Maintext = styled.h2`
@@ -12,10 +18,8 @@ export const Maintext = styled.h2`
   font-size: 16px;
   line-height: 24px;
 
-  /* identical to box height, or 150% */
   letter-spacing: 0.15px;
 
-  /* Basic / Black */
   color: #081f32;
 `;
 
@@ -26,7 +30,6 @@ export const SecondText = styled.h3`
   font-size: 14px;
   line-height: 20px;
 
-  /* identical to box height, or 143% */
   letter-spacing: 0.25px;
 
   color: #6e798c;
