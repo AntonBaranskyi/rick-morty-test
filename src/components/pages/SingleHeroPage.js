@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { getHeroById } from "../../services/fetch";
 
 import { Helmet } from "react-helmet";
+import SkeletonHero from "../Skeleton/SkeletonHero";
 
 export default function SingleHeroPage() {
   const { heroId } = useParams();
@@ -28,7 +29,7 @@ export default function SingleHeroPage() {
   return (
     <>
       {loading ? (
-        <p>loading</p>
+        <SkeletonHero/>
       ) : (
         <>
           <Helmet>
