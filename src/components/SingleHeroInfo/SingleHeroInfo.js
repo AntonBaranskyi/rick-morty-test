@@ -1,6 +1,6 @@
 import React from "react";
 import { WrapperInfo } from "./SingleHeroInfoStyled";
-import SingleHeroInfoItem from "../SingleHeroInfoItem";
+import SingleHeroInfoItem from "../SingleHeroInfoItem/SingleHeroItem";
 
 function SingleHeroInfo({ gender, status, species, origin, type }) {
   const infoItems = [
