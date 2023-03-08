@@ -79,9 +79,7 @@ function CharList() {
             {heroesContent.length > 0 ? (
               heroesContent
             ) : (
-        
-                <NotFoundHero>There is no any charecters 😕</NotFoundHero>
-            
+              <NotFoundHero>There is no any charecters 😕</NotFoundHero>
             )}
           </>
         )}

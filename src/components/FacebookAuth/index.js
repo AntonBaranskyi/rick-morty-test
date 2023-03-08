@@ -18,7 +18,7 @@ export default function FacebookAuth() {
   };
   return (
     <>
-    <HeaderPhoto/>
+      <HeaderPhoto />
       <div className="social-wrapper">
         <SocialButton
           className="social-btn"

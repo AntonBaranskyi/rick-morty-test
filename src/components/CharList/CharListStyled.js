@@ -26,7 +26,6 @@ export const WrapperList = styled.div`
 
   @media (max-width: 732px) {
     grid-template-columns: repeat(2, 1fr);
-    
   }
   @media (max-width: 650px) {
     grid-template-columns: repeat(1, 1fr);
@@ -57,4 +56,6 @@ export const NotFoundHero = styled.h3`
   font-size: 32px;
   font-weight: 700;
   text-align: center;
+
+  position: relative;
 `;
