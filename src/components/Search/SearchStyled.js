@@ -32,6 +32,10 @@ export const SearchInput = styled.input`
   @media (max-width: 480px) {
     margin: 0 5px;
   }
+
+  @media (max-width: 1024px) {
+    margin: 0 10px;
+  }
 `;
 
 export const SearchFind = styled.img`

@@ -6,6 +6,11 @@ export const WrapperArrow = styled.div`
 
   margin: 21px 0 31px 50px;
   cursor: pointer;
+
+  @media (max-width: 750px) {
+      position: relative;
+      left: -25px;
+  }
 `;
 
 export const Arrow = styled.img`
@@ -59,4 +64,5 @@ export const Info = styled.h3`
   color: #8e8e93;
 
   margin-bottom: 48px;
+text-align: center;
 `;
