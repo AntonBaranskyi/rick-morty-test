@@ -8,9 +8,10 @@ import {
 } from "./CharListItemStyled";
 
 function CharListItem({ name, species, image, id }) {
+  const itemRef = React.useRef(null);
   return (
     <Link to={`/singleHero/${id}`} style={{ textDecoration: "none" }}>
-      <WrapperItem>
+      <WrapperItem ref = {itemRef}>
         <ItemImg src={image} alt="rick" />
         <ItemTitle>{name}</ItemTitle>
         <ItemDescr>{species}</ItemDescr>

@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getHeroById } from "../../services/fetch";
 
+import { Helmet } from "react-helmet";
+
 export default function SingleHeroPage() {
   const { heroId } = useParams();
   const [singleHero, setSingleHero] = useState([]);
@@ -29,6 +31,10 @@ export default function SingleHeroPage() {
         <p>loading</p>
       ) : (
         <>
+          <Helmet>
+            <meta name={`${name} page`} content="Rick and Morty" />
+            <title>{`${name}'s page info`}</title>
+          </Helmet>
           <SingleHeroHeader name={name} image={image} />
           <SingleHeroInfo {...singleHero} />
         </>

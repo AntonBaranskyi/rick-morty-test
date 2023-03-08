@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import CharListItem from "../CharListItem/CharListItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { WrapperList } from "./CharListStyled";
+import { WrapperList, WrapperWrapper } from "./CharListStyled";
 import uniqid from "uniqid";
 
 import { getAllHeroes } from "../../services/fetch";
@@ -9,13 +9,25 @@ import Skeleton from "../Skeleton/Skeleton";
 import { SearchContext } from "../pages/HomePage";
 
 function CharList() {
-  const { searchValue } = useContext(SearchContext);
+  const { searchValue, setSearchValue } = useContext(SearchContext);
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const listItemRefs = useRef([]);
   useEffect(() => {
     getHero();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    localStorage.setItem("searchValue", searchValue);
+  }, [searchValue]);
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem("searchValue");
+    if (storedValue) {
+      setSearchValue(storedValue);
+    }
+  }, []);
 
   const getHero = () => {
     getAllHeroes().then(onLoadHeroes).catch(onError);
@@ -36,13 +48,21 @@ function CharList() {
     <Skeleton key={uniqid()} />
   ));
 
+  const handleMouseEnter = (index) => {
+    listItemRefs.current[index].style.backgroundColor = "red";
+  };
+
+  const handleMouseLeave = (index) => {
+    listItemRefs.current[index].style.backgroundColor = "";
+  };
+
   const heroesContent =
     heroes &&
     heroes
       .filter((obj) => {
         return obj.name.toLowerCase().includes(searchValue.toLowerCase());
       })
-      .map(({ name, species, image, id }) => {
+      .map(({ name, species, image, id }, index) => {
         return (
           <CharListItem
             key={uniqid()}
@@ -50,15 +70,20 @@ function CharList() {
             species={species}
             image={image}
             id={id}
+            ref={(el) => (listItemRefs.current[index] = el)}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
           />
         );
       });
 
   return (
-    <WrapperList>
-      {error && <ErrorMessage />}
-      {loading ? skeletonContent : heroesContent}
-    </WrapperList>
+    <WrapperWrapper>
+      <WrapperList>
+        {error && <ErrorMessage />}
+        {loading ? skeletonContent : heroesContent}
+      </WrapperList>
+    </WrapperWrapper>
   );
 }
 

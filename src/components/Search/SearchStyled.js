@@ -5,6 +5,8 @@ export const SearchWrapper = styled.div`
   justify-content: center;
   position: relative;
 
+  max-width: 1020px;
+  margin: 0 auto;
   margin-bottom: 61px;
 `;
 
@@ -22,23 +24,30 @@ export const SearchInput = styled.input`
 
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    font-size: 14px;
+  }
 `;
 
 export const SearchFind = styled.img`
   position: absolute;
-  left: 606px;
-  top: 24px;
 
   width: 24px;
   height: 24px;
+
+  left: 11px;
+  top: 22px;
 `;
 
 export const SearchClose = styled.img`
+  position: absolute;
   width: 24px;
   height: 24px;
-  position: absolute;
 
-  right: 610px;
+  right: 11px;
   top: 22px;
+
   cursor: pointer;
 `;

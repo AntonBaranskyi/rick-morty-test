@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   SearchClose,
   SearchFind,
@@ -12,6 +12,13 @@ import { SearchContext } from "../pages/HomePage";
 function Search() {
   const { searchValue, setSearchValue } = useContext(SearchContext);
   const searchRef = useRef(null);
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem("searchValue");
+    if (storedValue) {
+      setSearchValue(storedValue);
+    }
+  }, [setSearchValue]);
 
   const onCloseBtn = () => {
     setSearchValue("");
