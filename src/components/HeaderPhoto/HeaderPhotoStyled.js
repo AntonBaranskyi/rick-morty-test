@@ -23,5 +23,6 @@ export const HeaderLogo = styled.img`
     width: 200px;
     height: 67px;
     margin: 40px 0 8px 0;
+   
   }
 `;

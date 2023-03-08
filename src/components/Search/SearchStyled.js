@@ -29,9 +29,8 @@ export const SearchInput = styled.input`
     width: 100%;
     font-size: 14px;
   }
-  @media (max-width: 795px) {
-  
-    
+  @media (max-width: 480px) {
+    margin: 0 5px;
   }
 `;
 

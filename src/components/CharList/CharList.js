@@ -1,18 +1,20 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import CharListItem from "../CharListItem/CharListItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { WrapperList, WrapperWrapper } from "./CharListStyled";
 import uniqid from "uniqid";
 
-import { getAllHeroes } from "../../services/fetch";
 import Skeleton from "../Skeleton/Skeleton";
 import { SearchContext } from "../pages/HomePage";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchHeroes } from "../../redux/slices/heroesSlice";
 
 function CharList() {
   const { searchValue, setSearchValue } = useContext(SearchContext);
-  const [heroes, setHeroes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { status, items } = useSelector((state) => state.heroes);
+
+  const dispatch = useDispatch();
+
   const listItemRefs = useRef([]);
   useEffect(() => {
     getHero();
@@ -30,18 +32,7 @@ function CharList() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getHero = () => {
-    getAllHeroes().then(onLoadHeroes).catch(onError);
-  };
-
-  const onLoadHeroes = (resp) => {
-    const sortedHeroes = resp.sort((a, b) => a.name.localeCompare(b.name));
-    setHeroes(sortedHeroes);
-    setLoading(false);
-  };
-  const onError = () => {
-    setHeroes([]);
-    setLoading(false);
-    setError(true);
+    dispatch(fetchHeroes());
   };
 
   const skeletonContent = [...new Array(8)].map((_) => (
@@ -57,8 +48,8 @@ function CharList() {
   };
 
   const heroesContent =
-    heroes &&
-    heroes
+    items &&
+    items
       .filter((obj) => {
         return obj.name.toLowerCase().includes(searchValue.toLowerCase());
       })
@@ -80,8 +71,8 @@ function CharList() {
   return (
     <WrapperWrapper>
       <WrapperList>
-        {error && <ErrorMessage />}
-        {loading ? skeletonContent : heroesContent}
+        {status === "error" && <ErrorMessage />}
+        {status === "loading" ? skeletonContent : heroesContent}
       </WrapperList>
     </WrapperWrapper>
   );

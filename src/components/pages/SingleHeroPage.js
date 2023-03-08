@@ -2,34 +2,33 @@ import React from "react";
 import SingleHeroHeader from "../SingleHeroHeader/SingleHeroHeader";
 import SingleHeroInfo from "../SingleHeroInfo/SingleHeroInfo";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getHeroById } from "../../services/fetch";
+import { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import { Helmet } from "react-helmet";
 import SkeletonHero from "../Skeleton/SkeletonHero";
 
+import { fetchHero } from "../../redux/slices/singleHeroSlice";
+
 export default function SingleHeroPage() {
   const { heroId } = useParams();
-  const [singleHero, setSingleHero] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(false);
+  const { hero, status } = useSelector((state) => state.singleHero);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     onHeroData();
   }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onHeroData = () => {
-    getHeroById(heroId).then(onLoadHero);
+    dispatch(fetchHero(heroId));
   };
-  const onLoadHero = (resp) => {
-    setSingleHero(resp);
-    setLoading(false);
-  };
-  const { image, name } = singleHero;
+
+  const { image, name } = hero;
   return (
     <>
-      {loading ? (
-        <SkeletonHero/>
+      {status.loading === "loading" ? (
+        <SkeletonHero />
       ) : (
         <>
           <Helmet>
@@ -37,7 +36,7 @@ export default function SingleHeroPage() {
             <title>{`${name}'s page info`}</title>
           </Helmet>
           <SingleHeroHeader name={name} image={image} />
-          <SingleHeroInfo {...singleHero} />
+          <SingleHeroInfo {...hero} />
         </>
       )}
     </>

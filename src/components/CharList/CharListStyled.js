@@ -24,10 +24,9 @@ export const WrapperList = styled.div`
   }
   @media (max-width: 650px) {
     grid-template-columns: repeat(1, 1fr);
-    width: 80%;
+    width: 100%;
     margin-bottom: 50px;
 
-  
   }
     `;
 
