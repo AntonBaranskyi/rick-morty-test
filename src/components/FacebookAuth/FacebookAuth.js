@@ -11,11 +11,21 @@ export default function FacebookAuth() {
   const handleSocialLogin = (user) => {
     console.log(user);
     dispatch(getUserData(user.profile));
+    localStorage.setItem("USER_DATA", JSON.stringify(user.profile));
   };
 
   const handleSocialLoginFailure = (err) => {
     dispatch(getUserData(err));
   };
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("USER_DATA");
+    if (data) {
+      const user = JSON.parse(data);
+      console.log(user ,'asfdds');
+      dispatch(getUserData(user));
+    }
+  }, []);
   return (
     <>
       <HeaderPhoto />
