@@ -1,7 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import CharListItem from "../CharListItem/CharListItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { WrapperList, WrapperWrapper, NotFoundHero } from "./CharListStyled";
+import {
+  WrapperList,
+  WrapperWrapper,
+  NotFoundHero,
+  NotFoundWrapper,
+} from "./CharListStyled";
 import uniqid from "uniqid";
 
 import Skeleton from "../Skeleton/Skeleton";
@@ -67,7 +72,9 @@ function CharList() {
             {heroesContent.length > 0 ? (
               heroesContent
             ) : (
-              <NotFoundHero>There is no any charecters 😕</NotFoundHero>
+              <NotFoundWrapper>
+                <NotFoundHero>There is no any charecters 😕</NotFoundHero>
+              </NotFoundWrapper>
             )}
           </>
         )}

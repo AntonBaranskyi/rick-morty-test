@@ -3,6 +3,7 @@ import SingleHeroHeader from "../SingleHeroHeader/SingleHeroHeader";
 import SingleHeroInfo from "../SingleHeroInfo/SingleHeroInfo";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -25,6 +26,7 @@ export default function SingleHeroPage() {
 
   return (
     <>
+      {status === "error" && <ErrorMessage />}
       {status === "loading" ? (
         <SkeletonHero />
       ) : (

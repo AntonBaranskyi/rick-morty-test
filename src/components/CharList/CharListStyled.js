@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const WrapperList = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 24px;
@@ -41,6 +41,7 @@ export const WrapperWrapper = styled.div`
   align-items: center;
   width: 1100px;
   margin: 0 auto;
+  text-align: center;
 
   @media (max-width: 1430px) {
     width: 90%;
@@ -52,20 +53,16 @@ export const WrapperWrapper = styled.div`
   }
 `;
 
+export const NotFoundWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export const NotFoundHero = styled.h3`
   font-size: 32px;
   font-weight: 700;
-  text-align: left;
 
-  @media (max-width: 355px) {
-    position: relative;
-    right: 85px;
-    text-align: left;
-  }
-
-  @media (max-width: 609px) {
-    position: relative;
-    right: 85px;
-    
-  }
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 10px;
 `;
