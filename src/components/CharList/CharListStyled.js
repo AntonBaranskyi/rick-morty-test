@@ -65,4 +65,13 @@ export const NotFoundHero = styled.h3`
   text-align: center;
   margin: 0 auto;
   padding: 0 10px;
+
+  @media (max-width: 1000) {
+    justify-content: center;
+  }
+
+  @media (max-width: 400px) {
+    position: absolute;
+    left: 0px;
+  }
 `;
