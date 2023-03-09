@@ -25,7 +25,7 @@ export default function FacebookAuth() {
       console.log(user ,'asfdds');
       dispatch(getUserData(user));
     }
-  }, []);
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
       <HeaderPhoto />
