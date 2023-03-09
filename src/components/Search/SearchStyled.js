@@ -30,6 +30,7 @@ export const SearchInput = styled.input`
     font-size: 14px;
   }
 
+
   @media (max-width: 645px) {
     margin: 0 5px;
   }

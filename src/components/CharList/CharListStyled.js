@@ -12,10 +12,6 @@ export const WrapperList = styled.div`
   margin-bottom: 85px;
   /* place-items: center; */
 
-  @media (max-width: 1920px) {
-    width: 1100px;
-  }
-
   @media (max-width: 1078px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -23,7 +19,11 @@ export const WrapperList = styled.div`
   @media (max-width: 840px) {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  @media (max-width: 898px) {
+    grid-template-columns: repeat (2,1fr)
+    grid-row-gap: 16px;
+    margin-bottom: 50px;
+  }
   @media (max-width: 732px) {
     grid-template-columns: repeat(2, 1fr);
   }
