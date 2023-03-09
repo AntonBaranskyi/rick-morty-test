@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-   
         {userData ? (
           <>
             <Route path="/" element={<HomePage />} />
@@ -21,7 +20,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </>
         ) : (
-          <Route path=""  element={<FacebookAuth />} />
+          <Route path="" element={<FacebookAuth />} />
         )}
       </Routes>
     </div>

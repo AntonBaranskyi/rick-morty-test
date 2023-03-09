@@ -18,9 +18,11 @@ export default function SingleHeroPage() {
 
   useEffect(() => {
     dispatch(fetchHero(heroId));
+    localStorage.setItem("heroData", JSON.stringify(hero));
   }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { image, name } = hero;
+
   return (
     <>
       {status === "loading" ? (

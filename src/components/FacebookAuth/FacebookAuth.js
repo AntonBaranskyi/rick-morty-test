@@ -22,7 +22,6 @@ export default function FacebookAuth() {
     const data = localStorage.getItem("USER_DATA");
     if (data) {
       const user = JSON.parse(data);
-      console.log(user ,'asfdds');
       dispatch(getUserData(user));
     }
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
