@@ -14,7 +14,7 @@ export default function FacebookAuth() {
   };
 
   const handleSocialLoginFailure = (err) => {
-    console.error(err);
+    dispatch(getUserData(err));
   };
   return (
     <>
