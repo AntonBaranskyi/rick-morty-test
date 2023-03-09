@@ -73,7 +73,7 @@ function CharList() {
               heroesContent
             ) : (
               <NotFoundWrapper>
-                <NotFoundHero>There are no characters matching the criteria 😕</NotFoundHero>
+                <NotFoundHero>There is no any charecters 😕</NotFoundHero>
               </NotFoundWrapper>
             )}
           </>

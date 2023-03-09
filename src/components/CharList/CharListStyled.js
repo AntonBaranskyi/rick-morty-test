@@ -20,7 +20,7 @@ export const WrapperList = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 898px) {
-    grid-template-columns: repeat (2,1fr)
+    grid-template-columns: repeat (2, 1fr);
     grid-row-gap: 16px;
     margin-bottom: 50px;
   }
@@ -57,6 +57,11 @@ export const NotFoundWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 600px) and (orientation: landscape) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 export const NotFoundHero = styled.h3`
   font-size: 32px;
@@ -70,6 +75,10 @@ export const NotFoundHero = styled.h3`
     justify-content: center;
   }
 
+  @media (max-width: 600px) and (orientation: landscape) {
+    justify-content: center;
+    text-align: center;
+  }
   @media (max-width: 400px) {
     position: absolute;
     left: 0px;

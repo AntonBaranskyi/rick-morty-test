@@ -13,6 +13,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        {/* <Route path="/" element={<HomePage />} />
+            <Route path="/singleHero/:heroId" element={<SingleHeroPage />} />
+            <Route path="*" element={<NotFound />} /> */}
         {userData ? (
           <>
             <Route path="/" element={<HomePage />} />
@@ -20,7 +23,10 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </>
         ) : (
-          <Route path="" element={<FacebookAuth />} />
+          <>
+            <Route path="/" element={<FacebookAuth />} />
+            <Route path="*" element={<NotFound />} />
+          </>
         )}
       </Routes>
     </div>
