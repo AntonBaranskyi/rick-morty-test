@@ -1,6 +1,6 @@
 import React from "react";
 
-import SocialButton from "../SocialButton";
+import SocialButton from "../SocialButton/SocialButton";
 import { useDispatch } from "react-redux";
 import { getUserData } from "../../redux/slices/authSlice";
 import "./facebook.css";

@@ -17,17 +17,13 @@ export default function SingleHeroPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    onHeroData();
-  }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const onHeroData = () => {
     dispatch(fetchHero(heroId));
-  };
+  }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { image, name } = hero;
   return (
     <>
-      {status.loading === "loading" ? (
+      {status === "loading" ? (
         <SkeletonHero />
       ) : (
         <>
