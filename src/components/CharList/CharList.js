@@ -16,13 +16,13 @@ import { fetchHeroes } from "../../redux/slices/heroesSlice";
 
 function CharList() {
   const { searchValue, setSearchValue } = useContext(SearchContext);
-  const { status, items } = useSelector((state) => state.heroes);
+  const { status, items, pageNum } = useSelector((state) => state.heroes);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     getHero();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pageNum]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     localStorage.setItem("searchValue", searchValue);
@@ -36,7 +36,7 @@ function CharList() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getHero = () => {
-    dispatch(fetchHeroes());
+    dispatch(fetchHeroes(pageNum));
   };
 
   const skeletonContent = [...new Array(8)].map((_) => (

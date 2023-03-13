@@ -5,6 +5,7 @@ import Search from "../Search/Search";
 import CharList from "../CharList/CharList";
 
 import { Helmet } from "react-helmet";
+import Pagination from "../Pagination/Pagination";
 
 export const SearchContext = React.createContext();
 
@@ -19,6 +20,8 @@ function HomePage() {
       <HeaderPhoto />
       <Search />
       <CharList />
+
+      <Pagination />
     </SearchContext.Provider>
   );
 }

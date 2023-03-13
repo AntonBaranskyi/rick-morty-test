@@ -1,14 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchHeroes = createAsyncThunk("heroes/fetch", async () => {
-  const responce = await fetch("https://rickandmortyapi.com/api/character");
+export const fetchHeroes = createAsyncThunk(
+  "heroes/fetch",
+  async (pageNum = 1) => {
+    const responce = await fetch(
+      `https://rickandmortyapi.com/api/character/?page=${pageNum}`
+    );
 
-  return await responce.json();
-});
+    return await responce.json();
+  }
+);
 
 const initialState = {
   items: [],
   status: "loading", // loading,success ,error
+  pageNum: 1,
 };
 
 const heroesSlice = createSlice({
@@ -17,6 +23,10 @@ const heroesSlice = createSlice({
   reducers: {
     getAllHeroes: (state, action) => {
       state.items = action.payload;
+    },
+
+    setPageNum: (state, action) => {
+      state.pageNum = action.payload;
     },
   },
 
@@ -38,6 +48,6 @@ const heroesSlice = createSlice({
   },
 });
 
-export const { getAllHeroes } = heroesSlice.actions;
+export const { getAllHeroes, setPageNum } = heroesSlice.actions;
 
 export default heroesSlice.reducer;
