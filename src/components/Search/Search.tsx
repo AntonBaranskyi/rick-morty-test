@@ -11,7 +11,7 @@ import { SearchContext } from "../pages/HomePage";
 
 function Search() {
   const { searchValue, setSearchValue } = useContext(SearchContext);
-  const searchRef = useRef(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const storedValue = localStorage.getItem("searchValue");
@@ -22,14 +22,16 @@ function Search() {
 
   const onCloseBtn = () => {
     setSearchValue("");
-    searchRef.current.focus();
+    searchRef.current?.focus();
   };
   return (
     <SearchWrapper>
       <SearchFind src={find} alt="find" />
       <SearchInput
         ref={searchRef}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setSearchValue(e.target.value)
+        }
         value={searchValue}
         type="text"
         placeholder="Filter by name..."

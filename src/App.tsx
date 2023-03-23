@@ -7,9 +7,10 @@ import NotFound from "./components/pages/NotFound";
 
 import { useSelector } from "react-redux";
 import FacebookAuth from "./components/FacebookAuth/FacebookAuth";
+import { RootState } from "./redux/store/store";
 
 function App() {
-  const userData = useSelector((state) => state.auth.userData);
+  const userData = useSelector((state: RootState) => state.auth.userData);
   return (
     <div className="App">
       <Routes>

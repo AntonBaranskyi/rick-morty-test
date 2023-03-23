@@ -10,7 +10,12 @@ import {
 } from "./SingleHeroHeaderStyled";
 import { Link } from "react-router-dom";
 
-function SingleHeroHeader({ image, name }) {
+interface IHeader {
+  image?: string;
+  name?: string;
+}
+
+const SingleHeroHeader: React.FC<IHeader> = ({ image, name }) => {
   return (
     <>
       <Link style={{ textDecoration: "none" }} to="/">
@@ -25,6 +30,6 @@ function SingleHeroHeader({ image, name }) {
       <Info>Informations</Info>
     </>
   );
-}
+};
 
 export default SingleHeroHeader;

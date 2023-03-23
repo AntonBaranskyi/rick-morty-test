@@ -7,17 +7,26 @@ import "./facebook.css";
 import HeaderPhoto from "../HeaderPhoto/HeaderPhoto";
 import { useNavigate } from "react-router-dom";
 
+interface IUser {
+  profile: {
+    id: string;
+    name: string;
+    firstName: string;
+    email: string;
+  };
+}
+
 export default function FacebookAuth() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleSocialLogin = (user) => {
+  const handleSocialLogin = (user: IUser) => {
     console.log(user);
     dispatch(getUserData(user.profile));
     localStorage.setItem("USER_DATA", JSON.stringify(user.profile));
     navigate("/");
   };
 
-  const handleSocialLoginFailure = (err) => {
+  const handleSocialLoginFailure = (err: string) => {
     dispatch(getUserData(err));
     navigate("/");
   };

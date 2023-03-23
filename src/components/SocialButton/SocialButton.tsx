@@ -3,7 +3,7 @@ import SocialLogin from "react-social-login";
 
 class SocialButton extends React.Component {
   render() {
-    const { children, triggerLogin, ...props } = this.props;
+    const { children, triggerLogin, ...props }: any = this.props;
     return (
       <button onClick={triggerLogin} {...props}>
         {children}

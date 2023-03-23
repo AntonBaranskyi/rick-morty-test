@@ -5,29 +5,32 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Helmet } from "react-helmet";
 import SkeletonHero from "../Skeleton/SkeletonHero";
 
 import { fetchHero } from "../../redux/slices/singleHeroSlice";
+import { RootState, useAppDispatch } from "../../redux/store/store";
 
 export default function SingleHeroPage() {
   const { heroId } = useParams();
-  const { hero, status } = useSelector((state) => state.singleHero);
-  const dispatch = useDispatch();
+  const { hero, statusHero } = useSelector(
+    (state: RootState) => state.singleHero
+  );
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchHero(heroId));
     localStorage.setItem("heroData", JSON.stringify(hero));
   }, [heroId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const { image, name } = hero;
+  const { name, image, gender, species, status, origin, type } = hero || {};
 
   return (
     <>
-      {status === "error" && <ErrorMessage />}
-      {status === "loading" ? (
+      {statusHero === "error" && <ErrorMessage />}
+      {statusHero === "loading" ? (
         <SkeletonHero />
       ) : (
         <>
@@ -36,7 +39,13 @@ export default function SingleHeroPage() {
             <title>{`${name}'s page info`}</title>
           </Helmet>
           <SingleHeroHeader name={name} image={image} />
-          <SingleHeroInfo {...hero} />
+          <SingleHeroInfo
+            status={status}
+            gender={gender}
+            species={species}
+            origin={origin}
+            type={type}
+          />
         </>
       )}
     </>

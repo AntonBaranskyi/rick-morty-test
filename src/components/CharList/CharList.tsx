@@ -11,14 +11,27 @@ import uniqid from "uniqid";
 
 import Skeleton from "../Skeleton/Skeleton";
 import { SearchContext } from "../pages/HomePage";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchHeroes } from "../../redux/slices/heroesSlice";
+import { RootState, useAppDispatch } from "../../redux/store/store";
+
+export interface ICharList {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  image: string;
+}
 
 function CharList() {
-  const { searchValue, setSearchValue } = useContext(SearchContext);
-  const { status, items, pageNum } = useSelector((state) => state.heroes);
+  const { searchValue, setSearchValue } = useContext(SearchContext)!;
+  const { status, items, pageNum } = useSelector(
+    (state: RootState) => state.heroes
+  );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     getHero();

@@ -3,7 +3,23 @@ import { WrapperInfo } from "./SingleHeroInfoStyled";
 import SingleHeroInfoItem from "../SingleHeroInfoItem/SingleHeroItem";
 import uniqid from "uniqid";
 
-function SingleHeroInfo({ gender, status, species, origin, type }) {
+export interface IInfoProps {
+  gender?: string;
+  status?: string;
+  species?: string;
+  origin?: {
+    name: string;
+  };
+  type?: string;
+}
+
+const SingleHeroInfo: React.FC<IInfoProps> = ({
+  gender,
+  status,
+  species,
+  origin,
+  type,
+}) => {
   const infoItems = [
     { label: "Gender", value: gender },
     { label: "Status", value: status },
@@ -21,6 +37,6 @@ function SingleHeroInfo({ gender, status, species, origin, type }) {
         })}
     </WrapperInfo>
   );
-}
+};
 
 export default SingleHeroInfo;

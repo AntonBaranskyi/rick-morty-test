@@ -7,10 +7,18 @@ import CharList from "../CharList/CharList";
 import { Helmet } from "react-helmet";
 import Pagination from "../Pagination/Pagination";
 
-export const SearchContext = React.createContext();
+interface IContext {
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const SearchContext = React.createContext<IContext>({
+  searchValue: "",
+  setSearchValue: () => {},
+});
 
 function HomePage() {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState<string>("");
   return (
     <SearchContext.Provider value={{ searchValue, setSearchValue }}>
       <Helmet>
