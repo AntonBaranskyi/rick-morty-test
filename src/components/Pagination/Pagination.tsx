@@ -1,7 +1,7 @@
 import { StyledPaginate } from "./PaginationStyled";
 import { useDispatch } from "react-redux";
 import { setPageNum } from "../../redux/slices/heroesSlice";
-import React from 'react'
+import React from "react";
 
 function Pagination() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function Pagination() {
     dispatch(setPageNum(e.selected + 1));
   };
   return (
-    <StyledPaginate 
+    <StyledPaginate
       breakLabel="..."
       nextLabel=" >"
       onPageChange={handlePageClick}

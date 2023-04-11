@@ -22,7 +22,7 @@ function Search() {
 
   const onCloseBtn = () => {
     setSearchValue("");
-    searchRef.current?.focus();
+    searchRef.current && searchRef.current.focus();
   };
   return (
     <SearchWrapper>

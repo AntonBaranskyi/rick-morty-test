@@ -24,7 +24,7 @@ const SingleHeroInfo: React.FC<IInfoProps> = ({
     { label: "Gender", value: gender },
     { label: "Status", value: status },
     { label: "Species", value: species },
-    { label: "Origin", value: origin?.name },
+    { label: "Origin", value: origin && origin.name },
     { label: "Type", value: type || "Unknown" },
   ];
   return (

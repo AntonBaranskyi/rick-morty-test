@@ -17,8 +17,8 @@ interface IAuth {
   userData: {
     provider: string;
     _profile: IProfile;
-    _token: IToken
-  } | null
+    _token: IToken;
+  } | null;
 }
 const initialState: IAuth = {
   userData: null,
@@ -31,9 +31,12 @@ const authSlice = createSlice({
     getUserData: (state, action) => {
       state.userData = action.payload;
     },
+    logoutUser: (state) => {
+      state.userData = null;
+    },
   },
 });
 
-export const { getUserData } = authSlice.actions;
+export const { getUserData, logoutUser } = authSlice.actions;
 
 export default authSlice.reducer;

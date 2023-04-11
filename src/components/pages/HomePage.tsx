@@ -6,6 +6,7 @@ import CharList from "../CharList/CharList";
 
 import { Helmet } from "react-helmet";
 import Pagination from "../Pagination/Pagination";
+import AuthHeader from "../AuthHeader/AuthHeader";
 
 interface IContext {
   searchValue: string;
@@ -25,6 +26,7 @@ function HomePage() {
         <meta name={`Main page`} content="Rick and Morty" />
         <title>{`Rick and Morty`}</title>
       </Helmet>
+      <AuthHeader />
       <HeaderPhoto />
       <Search />
       <CharList />
